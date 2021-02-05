@@ -1,0 +1,14 @@
+{
+  "name": "ecommerce-mern",
+  "version": "1.0.0",
+  "description": "MERN eCommerce App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Nico Plyley",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
