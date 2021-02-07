@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Col, Row} from 'react-bootstrap'
-import axios from 'axios'
 import {Product} from '../components'
 import {listProducts} from '../actions/productActions.js'
 
