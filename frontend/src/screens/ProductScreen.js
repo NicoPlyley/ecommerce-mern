@@ -5,7 +5,7 @@ import {Loader, Message, Rating} from '../components'
 import {Button, Card, Col, Form, Image, ListGroup, Row} from 'react-bootstrap'
 import {listProductDetails} from '../actions/productActions'
 
-const ProductScreen = ({match}) => {
+const ProductScreen = ({match, history}) => {
     const [qty, setQty] = useState(0)
     const dispatch = useDispatch()
 
@@ -15,6 +15,10 @@ const ProductScreen = ({match}) => {
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match])
+
+    const addToCardHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
 
     return (
         <>
@@ -81,6 +85,7 @@ const ProductScreen = ({match}) => {
                                         <ListGroup.Item>
                                             <Button className="btn-block" type="button"
                                                     disabled={product.countInStock === 0}
+                                                    onClick={addToCardHandler}
                                             >Add To Cart</Button>
                                         </ListGroup.Item>
                                     </ListGroup>
