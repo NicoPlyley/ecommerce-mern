@@ -8,7 +8,7 @@ router.route('/').post(reigtserUser)
 router.post('/login', authUser)
 
 router.route('/profile')
-    .put(protect, updateUserProfile)
     .get(protect, getUserProfile)
+    .put(protect, updateUserProfile)
 
 export default router
