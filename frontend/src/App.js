@@ -4,7 +4,7 @@ import {Header, Footer} from './components'
 import {
     CartScreen,
     HomeScreen,
-    LoginScreen, PaymentScreen,
+    LoginScreen, PaymentScreen, PlaceOrderScreen,
     ProductScreen,
     ProfileScreen,
     RegisterScreen,
@@ -22,6 +22,7 @@ const App = () => {
                     <Route path="/profile" component={ProfileScreen} />
                     <Route path="/shipping" component={ShippingScreen} />
                     <Route path="/payment" component={PaymentScreen} />
+                    <Route path="/placeorder" component={PlaceOrderScreen} />
                     <Route path="/" component={HomeScreen} exact />
                     <Route path="/product/:id" component={ProductScreen} />
                     <Route path="/cart/:id?" component={CartScreen} />
