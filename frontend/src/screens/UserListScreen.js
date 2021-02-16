@@ -5,15 +5,21 @@ import {listUsers} from '../actions/userActions'
 import {Loader, Message} from '../components'
 import {Button, Table} from 'react-bootstrap'
 
-const UserListScreen = () => {
+const UserListScreen = ({history}) => {
     const dispatch = useDispatch()
     const userList = useSelector(state => state.userList)
+    const userLogin = useSelector(state => state.userLogin)
 
     const {loading ,error, users} = userList
+    const {userInfo} = userLogin
 
     useEffect(() => {
-        dispatch(listUsers())
-    }, [dispatch])
+        if (userInfo && userInfo.isAdmin) {
+            dispatch(listUsers())
+        } else {
+            history.push('/login')
+        }
+    }, [dispatch, history, userInfo])
 
     const deleteHandler = () => {
         console.log('delete')
