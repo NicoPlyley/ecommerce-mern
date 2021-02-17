@@ -7,8 +7,6 @@ const SearchBox = ({history}) => {
   useEffect(() => {
     if(keyword.trim()) {
       history.push(`/search/${keyword}`)
-    } else {
-      history.push('/')
     }
   }, [keyword])
 
