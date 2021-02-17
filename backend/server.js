@@ -1,6 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import path from 'path'
+import fs from 'fs'
+import morgan from 'morgan'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
@@ -14,6 +16,13 @@ connectDB()
 
 const app = express()
 
+const __dirname = path.resolve()
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+let logFormat = 'combined'
+
+app.use(morgan(logFormat, { stream: accessLogStream }))
+
 app.use(express.json())
 
 app.use('/api/products', productRoutes)
@@ -23,7 +32,6 @@ app.use('/api/upload', uploadRoutes)
 
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
 
-const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.use(notFound)
