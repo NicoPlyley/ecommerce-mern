@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {Button, Card, Col, Form, Image, ListGroup, Row,} from 'react-bootstrap'
-import {Loader, Message, Rating} from '../components'
+import {Loader, Message, Meta, Rating} from '../components'
 import {createReview, listProductDetails} from '../actions/productActions'
 import {PRODUCT_CREATE_REVIEW_RESET} from '../constants/productConstants'
 
@@ -48,6 +48,7 @@ const ProductScreen = ({match, history}) => {
       {loading && (<Loader />)}
       {error ? (<Message variant="danger">{error}</Message>) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
