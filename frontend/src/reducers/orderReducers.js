@@ -4,7 +4,7 @@ import {
     ORDER_CREATE_SUCCESS,
     ORDER_DETAILS_FAIL,
     ORDER_DETAILS_REQUEST,
-    ORDER_DETAILS_SUCCESS,
+    ORDER_DETAILS_SUCCESS, ORDER_LIST_FAIL, ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS,
     ORDER_LIST_USERS_FAIL, ORDER_LIST_USERS_REQUEST, ORDER_LIST_USERS_RESET,
     ORDER_LIST_USERS_SUCCESS,
     ORDER_PAY_FAIL,
@@ -99,6 +99,27 @@ export const orderListUsersReducer = (state = {orders: []}, action) => {
         case ORDER_LIST_USERS_RESET:
             return {
                 orders: []
+            }
+        default:
+            return state
+    }
+}
+
+export const orderListReducer = (state = {orders: []}, action) => {
+    switch (action.type) {
+        case ORDER_LIST_REQUEST:
+            return {
+                loading: true
+            }
+        case ORDER_LIST_SUCCESS:
+            return {
+                loading: false,
+                orders: action.payload
+            }
+        case ORDER_LIST_FAIL:
+            return {
+                loading: false,
+                error: action.payload
             }
         default:
             return state
