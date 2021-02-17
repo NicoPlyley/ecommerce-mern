@@ -44,7 +44,7 @@ const ProductEditScreen = ({history, match}) => {
         setDescription(product.description)
       }
     }
-  }, [product, dispatch, productId, successUpdate])
+  }, [product, dispatch, productId, successUpdate, history])
 
   const submitHandler = (e) => {
     e.preventDefault()

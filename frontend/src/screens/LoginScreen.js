@@ -21,7 +21,7 @@ const LoginScreen = ({location, history}) => {
         if (userInfo) {
             history.push(redirect)
         }
-    }, [history, userInfo, redirect])
+    }, [history, userInfo, redirect, loading])
 
     const submitHandler = (e) => {
         e.preventDefault()
